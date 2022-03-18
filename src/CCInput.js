@@ -85,7 +85,7 @@ export default class CCInput extends Component {
             autoCorrect={false}
             style={[
               s.baseInputStyle,
-              (this.input.isFocused === "valid") ? inputStyleFocus: inputStyle,
+              (this.refs.input.isFocused() === "valid") ? inputStyleFocus: inputStyle,
               ((validColor && status === "valid") ? { color: validColor } :
               (invalidColor && status === "invalid") ? { color: invalidColor } :
               {}),
