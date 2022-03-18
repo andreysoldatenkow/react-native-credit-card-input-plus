@@ -32,6 +32,7 @@ export default class CCInput extends Component {
     validColor: PropTypes.string,
     invalidColor: PropTypes.string,
     placeholderColor: PropTypes.string,
+    isFocused: PropTypes.bool,
 
     onFocus: PropTypes.func,
     onChange: PropTypes.func,
@@ -45,6 +46,7 @@ export default class CCInput extends Component {
     value: "",
     status: "incomplete",
     containerStyle: {},
+    isFocused: false,
     inputStyle: {},
     inputStyleFocus: {},
     labelStyle: {},
@@ -70,7 +72,7 @@ export default class CCInput extends Component {
 
   render() {
     const { label, value, placeholder, status, keyboardType,
-            containerStyle, inputStyle, inputStyleFocus, labelStyle,
+            containerStyle, inputStyle, inputStyleFocus, isFocused, labelStyle,
             validColor, invalidColor, placeholderColor,
             additionalInputProps } = this.props;
     return (
@@ -85,7 +87,7 @@ export default class CCInput extends Component {
             autoCorrect={false}
             style={[
               s.baseInputStyle,
-              (this.refs.input.isFocused() === "valid") ? inputStyleFocus: inputStyle,
+              isFocused ? inputStyleFocus: inputStyle,
               ((validColor && status === "valid") ? { color: validColor } :
               (invalidColor && status === "invalid") ? { color: invalidColor } :
               {}),

@@ -175,7 +175,8 @@ export default class CreditCardInput extends Component {
           cvc={cvc} />
         <CCInput {...this._inputProps("number")}
                  keyboardType="numeric"
-                 containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+                 isFocused={focused ===  "number"}
+                 containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
         <ScrollView ref="Form"
           horizontal={horizontalScroll}
           keyboardShouldPersistTaps="always"
@@ -184,10 +185,12 @@ export default class CreditCardInput extends Component {
           style={s.form}>
           <CCInput {...this._inputProps("expiry")}
             keyboardType="numeric"
+            isFocused={focused ===  "expiry"}
             containerStyle={[s.inputContainer, inputContainerStyle, { width: EXPIRY_INPUT_WIDTH }]} />
           { requiresCVC &&
             <CCInput {...this._inputProps("cvc")}
               keyboardType="numeric"
+              isFocused={focused ===  "cvc"}
               containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
         </ScrollView>
         <ScrollView ref="FormExt"
@@ -198,10 +201,12 @@ export default class CreditCardInput extends Component {
           style={s.form}>
           { requiresName &&
             <CCInput {...this._inputProps("name")}
+                     isFocused={focused ===  "name"}
                      containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} /> }
           { requiresPostalCode &&
             <CCInput {...this._inputProps("postalCode")}
                      keyboardType="numeric"
+                     isFocused={focused ===  "postalCode"}
                      containerStyle={[s.inputContainer, inputContainerStyle, { width: POSTAL_CODE_INPUT_WIDTH }]} /> }
         </ScrollView>
       </View>
