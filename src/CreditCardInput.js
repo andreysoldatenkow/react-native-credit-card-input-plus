@@ -183,17 +183,17 @@ export default class CreditCardInput extends Component {
           <CCInput {...this._inputProps("number")}
                    keyboardType="numeric"
                    isFocused={focused ===  "number"}
-                   containerStyle={[{ padding: 8, width: CARD_NUMBER_INPUT_WIDTH }]} />
+                   containerStyle={[{ padding: 4, width: CARD_NUMBER_INPUT_WIDTH }]} />
           <View style={s.row}>
             <CCInput {...this._inputProps("expiry")}
                      keyboardType="numeric"
                      isFocused={focused ===  "expiry"}
-                     containerStyle={[{ padding: 8, width: CVC_INPUT_WIDTH }]} />
+                     containerStyle={[{ padding: 4, width: CVC_INPUT_WIDTH }]} />
             { requiresCVC &&
               <CCInput {...this._inputProps("cvc")}
                        keyboardType="numeric"
                        isFocused={focused ===  "cvc"}
-                       containerStyle={[{ padding: 8, width: CVC_INPUT_WIDTH }]} /> }
+                       containerStyle={[{ padding: 4, width: CVC_INPUT_WIDTH }]} /> }
 
           </View>
         </View>
