@@ -17,7 +17,7 @@ import { InjectedProps } from "./connectToState";
 
 const s = StyleSheet.create({
   container: {
-    alignItems: "center",
+    alignItems: 'stretch',
   },
   form: {
     marginTop: 20,
@@ -50,6 +50,7 @@ export default class CreditCardInput extends Component {
 
     labelStyle: Text.propTypes.style,
     inputStyle: Text.propTypes.style,
+    inputStyleFocus: Text.propTypes.style,
     inputContainerStyle: ViewPropTypes.style,
 
     validColor: PropTypes.string,
@@ -118,7 +119,7 @@ export default class CreditCardInput extends Component {
 
   _inputProps = field => {
     const {
-      inputStyle, labelStyle, validColor, invalidColor, placeholderColor,
+      inputStyle, inputStyleFocus, labelStyle, validColor, invalidColor, placeholderColor,
       placeholders, labels, values, status,
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
       additionalInputsProps,
@@ -126,6 +127,7 @@ export default class CreditCardInput extends Component {
 
     return {
       inputStyle: [s.input, inputStyle],
+      inputStyleFocus: [s.inputStyleFocus, inputStyleFocus],
       labelStyle: [s.inputLabel, labelStyle],
       validColor, invalidColor, placeholderColor,
       ref: field, field,
