@@ -178,7 +178,7 @@ export default class CreditCardInput extends Component {
         <CCInput {...this._inputProps("number")}
                  keyboardType="numeric"
                  isFocused={focused ===  "number"}
-                 containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+                 containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
         <View style={s.row}>
           <CCInput {...this._inputProps("expiry")}
                    keyboardType="numeric"
