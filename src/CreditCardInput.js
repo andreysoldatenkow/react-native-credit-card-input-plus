@@ -22,6 +22,10 @@ const s = StyleSheet.create({
   form: {
     marginTop: 20,
   },
+  row: {
+    flex: 1,
+    flexDirection: "row"
+  },
   inputContainer: {
     marginLeft: 20,
   },
@@ -177,37 +181,25 @@ export default class CreditCardInput extends Component {
                  keyboardType="numeric"
                  isFocused={focused ===  "number"}
                  containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+        <View ref="Form"
+              style={s.row}>
+          <CCInput {...this._inputProps("expiry")}
+                   keyboardType="numeric"
+                   isFocused={focused ===  "expiry"}
+                   containerStyle={[s.inputContainer, inputContainerStyle, { width: EXPIRY_INPUT_WIDTH }]} />
+          { requiresCVC &&
+            <CCInput {...this._inputProps("cvc")}
+                     keyboardType="numeric"
+                     isFocused={focused ===  "cvc"}
+                     containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
+
+        </View>
         <ScrollView ref="Form"
           horizontal={horizontalScroll}
           keyboardShouldPersistTaps="always"
           scrollEnabled={allowScroll}
           showsHorizontalScrollIndicator={false}
           style={s.form}>
-          <CCInput {...this._inputProps("expiry")}
-            keyboardType="numeric"
-            isFocused={focused ===  "expiry"}
-            containerStyle={[s.inputContainer, inputContainerStyle, { width: EXPIRY_INPUT_WIDTH }]} />
-          { requiresCVC &&
-            <CCInput {...this._inputProps("cvc")}
-              keyboardType="numeric"
-              isFocused={focused ===  "cvc"}
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
-        </ScrollView>
-        <ScrollView ref="FormExt"
-          horizontal={horizontalScroll}
-          keyboardShouldPersistTaps="always"
-          scrollEnabled={allowScroll}
-          showsHorizontalScrollIndicator={false}
-          style={s.form}>
-          { requiresName &&
-            <CCInput {...this._inputProps("name")}
-                     isFocused={focused ===  "name"}
-                     containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} /> }
-          { requiresPostalCode &&
-            <CCInput {...this._inputProps("postalCode")}
-                     keyboardType="numeric"
-                     isFocused={focused ===  "postalCode"}
-                     containerStyle={[s.inputContainer, inputContainerStyle, { width: POSTAL_CODE_INPUT_WIDTH }]} /> }
         </ScrollView>
       </View>
     );
