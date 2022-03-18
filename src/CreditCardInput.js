@@ -181,8 +181,7 @@ export default class CreditCardInput extends Component {
                  keyboardType="numeric"
                  isFocused={focused ===  "number"}
                  containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
-        <View ref="Form"
-              style={s.row}>
+        <View style={s.row}>
           <CCInput {...this._inputProps("expiry")}
                    keyboardType="numeric"
                    isFocused={focused ===  "expiry"}
@@ -194,13 +193,6 @@ export default class CreditCardInput extends Component {
                      containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
 
         </View>
-        <ScrollView ref="Form"
-          horizontal={horizontalScroll}
-          keyboardShouldPersistTaps="always"
-          scrollEnabled={allowScroll}
-          showsHorizontalScrollIndicator={false}
-          style={s.form}>
-        </ScrollView>
       </View>
     );
   }
