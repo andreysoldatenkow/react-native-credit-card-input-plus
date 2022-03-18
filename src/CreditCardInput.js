@@ -38,9 +38,9 @@ const s = StyleSheet.create({
 });
 
 const CARD_NUMBER_INPUT_WIDTH_OFFSET = 40;
-const CVC_INPUT_WIDTH = (Dimensions.get("window").width - CARD_NUMBER_INPUT_WIDTH_OFFSET)/2;
-const EXPIRY_INPUT_WIDTH = CVC_INPUT_WIDTH;
 const CARD_NUMBER_INPUT_WIDTH = Dimensions.get("window").width - 40;
+const CVC_INPUT_WIDTH = (CARD_NUMBER_INPUT_WIDTH - 40)/2;
+const EXPIRY_INPUT_WIDTH = CVC_INPUT_WIDTH;
 const NAME_INPUT_WIDTH = CARD_NUMBER_INPUT_WIDTH;
 const PREVIOUS_FIELD_OFFSET = 40;
 const POSTAL_CODE_INPUT_WIDTH = 120;
@@ -178,7 +178,7 @@ export default class CreditCardInput extends Component {
         <CCInput {...this._inputProps("number")}
                  keyboardType="numeric"
                  isFocused={focused ===  "number"}
-                 containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+                 containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
         <View style={s.row}>
           <CCInput {...this._inputProps("expiry")}
                    keyboardType="numeric"
