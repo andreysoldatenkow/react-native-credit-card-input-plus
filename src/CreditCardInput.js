@@ -15,28 +15,6 @@ import CreditCard from "./CardView";
 import CCInput from "./CCInput";
 import { InjectedProps } from "./connectToState";
 
-const s = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
-  form: {
-    marginTop: 20,
-  },
-  row: {
-    flex: 1,
-    flexDirection: "row"
-  },
-  inputContainer: {
-    marginLeft: 20,
-  },
-  inputLabel: {
-    fontWeight: "bold",
-  },
-  input: {
-    height: 40,
-  },
-});
-
 const CARD_NUMBER_INPUT_WIDTH_OFFSET = 40;
 const CARD_NUMBER_INPUT_WIDTH = Dimensions.get("window").width - 40;
 const CVC_INPUT_WIDTH = (CARD_NUMBER_INPUT_WIDTH)/2;
@@ -44,6 +22,32 @@ const EXPIRY_INPUT_WIDTH = CVC_INPUT_WIDTH;
 const NAME_INPUT_WIDTH = CARD_NUMBER_INPUT_WIDTH;
 const PREVIOUS_FIELD_OFFSET = 40;
 const POSTAL_CODE_INPUT_WIDTH = 120;
+
+const s = StyleSheet.create({
+  container: {
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  inputContainer: {
+    padding: 10,
+  },
+  form: {
+    marginTop: 20,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: CARD_NUMBER_INPUT_WIDTH,
+    maxWidth: EXPIRY_INPUT_WIDTH,
+  },
+  inputLabel: {
+    fontWeight: "bold",
+  },
+  input: {
+    height: 50,
+  },
+});
+
 
 /* eslint react/prop-types: 0 */ // https://github.com/yannickcr/eslint-plugin-react/issues/106
 export default class CreditCardInput extends Component {
@@ -175,21 +179,23 @@ export default class CreditCardInput extends Component {
           number={number}
           expiry={expiry}
           cvc={cvc} />
-        <CCInput {...this._inputProps("number")}
-                 keyboardType="numeric"
-                 isFocused={focused ===  "number"}
-                 containerStyle={[s.inputContainer, { width: CARD_NUMBER_INPUT_WIDTH }]} />
-        <View style={s.row}>
-          <CCInput {...this._inputProps("expiry")}
+        <View style={s.inputContainer}>
+          <CCInput {...this._inputProps("number")}
                    keyboardType="numeric"
-                   isFocused={focused ===  "expiry"}
-                   containerStyle={[s.inputContainer, inputContainerStyle, { width: EXPIRY_INPUT_WIDTH }]} />
-          { requiresCVC &&
-            <CCInput {...this._inputProps("cvc")}
+                   isFocused={focused ===  "number"}
+                   containerStyle={[{ padding: 8, width: CARD_NUMBER_INPUT_WIDTH }]} />
+          <View style={s.row}>
+            <CCInput {...this._inputProps("expiry")}
                      keyboardType="numeric"
-                     isFocused={focused ===  "cvc"}
-                     containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
+                     isFocused={focused ===  "expiry"}
+                     containerStyle={[{ padding: 8, width: CVC_INPUT_WIDTH }]} />
+            { requiresCVC &&
+              <CCInput {...this._inputProps("cvc")}
+                       keyboardType="numeric"
+                       isFocused={focused ===  "cvc"}
+                       containerStyle={[{ padding: 8, width: CVC_INPUT_WIDTH }]} /> }
 
+          </View>
         </View>
       </View>
     );
