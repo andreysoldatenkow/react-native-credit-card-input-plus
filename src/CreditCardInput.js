@@ -33,7 +33,7 @@ const s = StyleSheet.create({
   },
 });
 
-const CVC_INPUT_WIDTH = Dimensions.get("window").width - 32;
+const CVC_INPUT_WIDTH = (Dimensions.get("window").width - 32)/2;
 const EXPIRY_INPUT_WIDTH = CVC_INPUT_WIDTH;
 const CARD_NUMBER_INPUT_WIDTH_OFFSET = 40;
 const CARD_NUMBER_INPUT_WIDTH = Dimensions.get("window").width - 32;
